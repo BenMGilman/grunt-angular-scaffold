@@ -8,53 +8,53 @@ var pkg = require('./package.json');
 //this method is used to create a set of inclusive patterns for all subdirectories
 //skipping node_modules, _bc, dist, and any .dirs
 //This enables users to create any directory structure they desire.
-var createFolderGlobs = function(fileTypePatterns, withSrcPrefix) {
+var createFolderGlobs = function (fileTypePatterns, withSrcPrefix) {
     fileTypePatterns = Array.isArray(fileTypePatterns) ? fileTypePatterns : [fileTypePatterns];
     var ignore = ['node_modules', 'bower_components', 'dist', 'temp'];
     var fs = require('fs');
-    var srcWithPattern = fileTypePatterns.map(function(pattern) {
+    var srcWithPattern = fileTypePatterns.map(function (pattern) {
         return 'src/' + pattern;
     });
     return fs.readdirSync('./src')
-        .map(function(file) {
-            if(ignore.indexOf(file) !== -1 ||
+        .map(function (file) {
+            if (ignore.indexOf(file) !== -1 ||
                 file.indexOf('.') === 0 || !fs.lstatSync('./src/' + file).isDirectory()) {
                 return null;
             } else {
-                return fileTypePatterns.map(function(pattern) {
+                return fileTypePatterns.map(function (pattern) {
                     return (withSrcPrefix ? 'src/' : '') + file + '/**/' + pattern;
                 });
             }
         })
-        .filter(function(patterns) {
+        .filter(function (patterns) {
             return patterns;
         })
         .concat(srcWithPattern);
 };
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
     var modRewrite = require('connect-modrewrite');
 
-    var mountFolder = function(connect, dir) {
+    var mountFolder = function (connect, dir) {
         return connect.static(require('path').resolve(dir));
     };
 
     /* configure rewrites for html5 mode */
-    var middlewares = function(connect) {
+    var middlewares = function (connect) {
         return [
             modRewrite(['^[^\\.]*$ /index.html [L]']),
             modRewrite(['^temp/app.css$ /temp/app.css [L]']),
             connect().use(
                 '/temp',
                 mountFolder(connect, './temp')
-            ),
+                ),
             connect().use(
                 '/bower_components',
                 mountFolder(connect, './bower_components')
-            ),
+                ),
             mountFolder(connect, 'src')
         ];
     };
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
                     spawn: true
                 }
 
-        },
+            },
             css: {
                 files: ['temp/app.css']
             }
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
                 options: {},
                 files: {
                     "temp/app.css": "src/app.module.less" // destination file and source file
-            }
+                }
             }
         },
         ngtemplates: {
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    {src: ['img/**'], dest: 'dist/'},
+                    { src: ['img/**'], dest: 'dist/' },
                     {
                         src: ['bower_components/font-awesome/fonts/**'],
                         dest: 'dist/',
@@ -177,7 +177,7 @@ module.exports = function(grunt) {
             read: {
                 options: {
                     read: [
-                        {selector: 'script[data-concat!="false"]', attribute: 'src', writeto: 'appjs', isPath: true},
+                        { selector: 'script[data-concat!="false"]', attribute: 'src', writeto: 'appjs', isPath: true },
                         {
                             selector: 'link[rel="stylesheet"][data-concat!="false"]',
                             attribute: 'href',
@@ -192,8 +192,8 @@ module.exports = function(grunt) {
                 options: {
                     remove: ['script[data-remove!="false"]', 'link[data-remove!="false"]'],
                     append: [
-                        {selector: 'body', html: '<script src="app.full.min.js"></script>'},
-                        {selector: 'head', html: '<link rel="stylesheet" href="app.full.min.css">'}
+                        { selector: 'body', html: '<script src="app.full.min.js"></script>' },
+                        { selector: 'head', html: '<link rel="stylesheet" href="app.full.min.css">' }
                     ]
                 },
                 src: 'src/index.html',
@@ -238,6 +238,23 @@ module.exports = function(grunt) {
                 files: {
                     'dist/index.html': 'dist/index.html'
                 }
+            }
+        },
+        injector: {
+            options: {
+                relative: true,
+                addRootSlash: false,
+                ignorePath: 'src/'
+            },
+            local_dependencies: {
+                files: {
+                    'src/index.html': ['src/**/*.module.js', 'src/**/*.js', 'temp/app.css']
+                }
+            }
+        },
+        wiredep: {
+            main: {
+                src: 'src/index.html'
             }
         },
         //Imagemin has issues on Windows.
@@ -320,20 +337,20 @@ module.exports = function(grunt) {
         'jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
         'copy', 'htmlmin', 'clean:after'
     ]);
-    grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'less:development', 'watch']);
+    grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'less:development', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests', 'e2e-test']);
-
+    grunt.registerTask('inject', ['injector', 'wiredep']);
     grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
 
-    grunt.event.on('watch', function(action, filepath) {
+    grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156
 
         var tasksToRun = [];
 
-        if(filepath.match(/\.js|\.spec|\.feature/)) {
+        if (filepath.match(/\.js|\.spec|\.feature/)) {
 
             //lint the changed js file
-            if(filepath.match(/\.js/)) {
+            if (filepath.match(/\.js/)) {
                 grunt.config('jshint.main.src', filepath);
                 tasksToRun.push('jshint');
             }
@@ -344,21 +361,21 @@ module.exports = function(grunt) {
 
             //changed file was a test
             var match = filepath.match(/\.spec|\.feature|\.steps\.js/);
-            if(match && match[0] === '.spec') {
+            if (match && match[0] === '.spec') {
                 spec = filepath;
-            } else if(match && match[0] === '.feature') {
+            } else if (match && match[0] === '.feature') {
                 e2e = filepath;
-            } else if(match && match[0] === '.steps.js') {
+            } else if (match && match[0] === '.steps.js') {
                 e2e = filepath
-                        .replace(match[0], '.feature')
-                        .replace('step_definitions/', '');
-            } else if(!match) {
+                    .replace(match[0], '.feature')
+                    .replace('step_definitions/', '');
+            } else if (!match) {
                 spec = filepath.replace('.js', '.spec.js');
                 e2e = filepath.split('.').slice(0, -2) + '.feature';
             }
 
             //if the spec exists then lets run it
-            if(spec && grunt.file.exists(spec)) {
+            if (spec && grunt.file.exists(spec)) {
                 var files = [].concat(grunt.config('dom_munger.data.appjs'));
                 files.push('bower_components/angular-mocks/angular-mocks.js');
                 files.push(spec);
@@ -366,7 +383,7 @@ module.exports = function(grunt) {
                 tasksToRun.push('karma:during_watch');
             }
 
-            if(e2e && grunt.file.exists(e2e)) {
+            if (e2e && grunt.file.exists(e2e)) {
                 var e2eFiles = [];
                 e2eFiles.push(e2e);
                 grunt.config('protractor.continuous.options.args.specs', e2eFiles);
@@ -376,7 +393,7 @@ module.exports = function(grunt) {
 
         //if index.html changed, we need to reread the <script> tags so our next run of karma
         //will have the correct environment
-        if(filepath === 'src/index.html') {
+        if (filepath === 'src/index.html') {
             tasksToRun.push('dom_munger:read');
         }
 
