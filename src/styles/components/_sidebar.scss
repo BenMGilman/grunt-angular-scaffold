@@ -1,0 +1,180 @@
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+
+$sidebar__background--light: #433c35;
+$sidebar__background--dark: #373029;
+$sidebar__text: #9f8e7c;
+
+$sidebar-nav__border: #706457;
+$sidebar-nav__background--selected: #2a2621;
+$sidebar-nav__text--selected: $color-white;
+
+.sidebar {
+  color: $sidebar__text;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-image: url('../images/Nav-Image.jpg');
+  background-position:center bottom;
+  background-repeat: no-repeat;
+  background-color: $sidebar__background--light;
+  padding: 0;
+  width: $sidebar-width;
+  min-height: 780px;
+
+  a {
+    color: $color-orange;
+    text-decoration: none;
+    font-weight: 100;
+  }
+
+  .sidebar-logo {
+    padding: 25px 0;
+    background-color: $sidebar__background--dark;
+    border-bottom: 1px solid $sidebar-nav__border;
+
+    img {
+      height: 60px;
+    }
+  }
+
+  $border__size: 3px;
+  $padding__size: 8px;
+
+  .sidebar-nav ul {
+    margin-bottom: 0;
+
+    button {
+      width: 100%;
+      padding: 0;
+      text-align: left;
+
+      &[disabled] {
+        // background-color: darken(gray, 5%);
+
+        li {
+          cursor: default;
+          color: lighten(gray, 5%);
+        }
+      }
+
+    }
+
+    // nav menu items
+    li {
+      padding: 14px $padding__size;
+      color: $sidebar--text;
+      cursor: pointer;
+      border-bottom: 1px solid $sidebar-nav__border;
+      font-weight: 400;
+      letter-spacing: 1px;
+
+      // menu icons
+      .sidebar-nav__icon {
+        width: 35px;
+        display: inline-block;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .badge {
+        float: right;
+        background-color: $color-red;
+        border-radius: 20px;
+        padding: 2px 7px;
+        color: $color-white;
+      }
+    }
+
+
+    .is-selected li {
+      color: $sidebar-nav__text--selected;
+      background-color: $sidebar-nav__background--selected;
+      border-left: $border__size solid $color-orange;
+      padding-left: $padding__size - $border__size;
+    }
+  }
+
+  .sidebar-dsr {
+    padding: 20px 10px;
+    background-color: $sidebar__background--dark;
+    border-bottom: 1px solid $sidebar-nav__border;
+    letter-spacing: 1px;
+    text-align: center;
+
+    img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50px;
+    }
+
+    .contact-info {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight: 100;
+
+      // contact info items
+      span {
+        color: white;
+        display: block;
+      }
+    }
+  }
+
+  .sidebar-meta {    
+    font-size: 11px;
+    font-weight: 300;
+    bottom: 10px;
+    left: 0;    
+  }
+}
+
+.mobile-menu-overlay {
+  position: absolute;
+  background-color: rgba(0,0,0,.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+@media (max-width: $screen-sm-max) {
+  .sidebar {
+    width: 250px;
+    position: absolute;
+    left: -200px;
+    background-image: none;
+    background-color: $sidebar-nav__background--selected;
+
+    @include transform(translate(-200px,0));
+    @include transition(0.5s ease-in-out);
+
+    &.open {
+      z-index: 15;
+      @include transform(translate(200px,0));
+      @include transition(0.5s ease-in-out);
+    }
+
+    .person-info {
+      border-bottom: 1px solid $sidebar-nav__border;
+      background-color: $sidebar__background--dark;
+    }
+    .sidebar-dsr {
+      text-align: left;
+      background-color: transparent;
+
+      .contact-info-wrapper {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+
+        .contact-info {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

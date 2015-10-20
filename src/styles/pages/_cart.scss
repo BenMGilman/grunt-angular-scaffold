@@ -1,0 +1,44 @@
+.ship-dates {
+  left: initial;
+  right: 0;
+}
+
+.critical-items__tabset {
+  .nav-tabs li a {
+    padding: 8px 15px;
+    // font-weight: 600;
+  }
+  .nav-tabs li.active a, .nav-tabs li.active a:hover {
+    padding-top: 6px;
+    // background-color: $background;
+    border-bottom: 1px solid $color-border;
+  }
+
+  .tab-content {
+    @include scroll-div-vertical(225px);
+  }
+}
+
+.cart-items-form .button-row{
+  button{
+    margin-right:0px;
+    margin-left:0px;
+    padding:6px 5px 6px 4px;
+     font-size:11px;
+
+  }
+}
+
+.btn-mobile{
+ padding:6px 5px 6px 4px;
+ font-size:11px;
+}
+
+@media print {
+  .select-cart {
+    border: none;
+    padding: none;
+    font-size: 16px;
+  }
+}
+  

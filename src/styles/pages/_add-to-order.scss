@@ -1,0 +1,50 @@
+.select-nav-bar {
+  .info-box {
+    @extend .info-box;
+    padding: 10px 15px;
+    border-bottom: none;
+
+    .nav-description {
+      font-size: 14px;
+      display: block;
+    }
+    .nav-title {
+      font-size: 16px;
+    }
+    .nav-subtotal {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .select-nav-bar .info-box {
+    .nav-description {
+      display: inline-block;
+      width: 100px;
+    }
+    .icon-arrow-down7 {
+      line-height: 22px;
+    }
+  }
+}
+
+
+// info box borders
+// TODO: cleanup
+@media (min-width: $screen-md-min) {
+  .select-nav-bar .info-box {
+    border-right: none;
+    &:last-child {
+      border-right: 1px solid $color-border;
+    }
+  }
+}
+@media (min-width: $screen-sm-min) {
+  .select-nav-bar .info-box {
+    &.no-border-right-sm  {
+      border-right: none;
+    }
+  } 
+}

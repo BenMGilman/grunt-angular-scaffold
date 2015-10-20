@@ -1,0 +1,28 @@
+.order-item {
+  @include make-row();
+  margin-top: 8px;
+
+  .order-item-title {
+    font-weight: 600;
+    @include make-sm-column(2);
+    // @include make-md-column(2);
+  }
+  .order-item-value-1, .order-item-value-2 {
+    color: $color-font-light;
+  }
+  .order-item-value-1 {
+    @include make-sm-column(3);
+  }
+  .order-item-value-2 {
+    @include make-sm-column(5);
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .order-item {
+    margin-top: 0;
+  }
+  .order-item-title {
+    margin-top: 5px;
+  }
+}

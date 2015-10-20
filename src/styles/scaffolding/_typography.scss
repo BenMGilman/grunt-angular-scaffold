@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'Open Sans';
+  src:url('../fonts/google-fonts-Open_Sans/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src:url('../fonts/google-fonts-Open_Sans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src:url('../fonts/google-fonts-Open_Sans/OpenSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code39AzaleaFont';
+  src:url('../fonts/Code39Azalea/Code39Azalea.eot');
+  src:url('../fonts/Code39Azalea/Code39Azalea.eot') format('embedded-opentype'),
+    url('../fonts/Code39Azalea/Code39Azalea.woff') format('woff'),
+    url('../fonts/Code39Azalea/Code39Azalea.ttf') format('truetype'),
+    url('../fonts/Code39Azalea/Code39Azalea.svg#Code39Azalea') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.barcode {
+  font-family: 'Code39AzaleaFont';
+}
+
+a {
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.text-red { color: $color-red; }
+.text-green { color: $color-green; }
+.text-white { color: $color-white; }
+.text-regular { color: $color-font; }
+.text-blue { color: $color-blue; }
+.text-light { color: $color-font-light; }
+.text-gold { color: gold; }
+
+.text-thin { font-weight: 300; }
+
+.text-small {
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.text-large {
+  font-size: 14px;
+}

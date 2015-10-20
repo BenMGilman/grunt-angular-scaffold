@@ -1,0 +1,105 @@
+.nav-tabs {
+  &.nav-justified {
+    > li.active > a {
+      border-bottom: 1px solid transparent;
+      padding-top: 12px;
+      &:hover {
+        border-bottom: 1px solid transparent;
+        margin-right: 0;
+        border-radius: 4px 4px 0 0;
+        padding-top: 12px;
+      }
+    }
+    > li > a {
+      font-size: 15px;
+
+      &:hover {
+        margin-right: 0;
+        border-radius: 4px 4px 0 0;
+      }
+    }
+  }
+
+  li {
+    a {
+      margin-right: 5px;
+      color: $color-font;
+      border-radius: 0;
+      border: 1px solid $color-border;
+      padding: 12px 40px;
+
+      &:hover {
+        @extend a;
+      }
+    }
+    &.active a {
+      border-bottom-color: transparent;
+      border-top: 3px solid $color-blue;
+      padding-top: 10px;
+      font-weight: normal;
+      background-color: $color-white;
+
+      &:hover {
+        @extend a;
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+}
+
+.tabset.tab-border .tab-content {
+  .tab-pane {
+    background-color: $color-white;
+    border-left: 1px solid $color-border;
+    border-right: 1px solid  $color-border;
+    border-bottom: 1px solid  $color-border;
+  }
+}
+
+.tabset.modal-body .tab-content {
+  padding: 15px;
+  border: 1px solid $color-border;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .nav-tabs {
+    li {
+      width: 100%;
+
+      a {
+        margin-right: 0px;
+        border-radius: 8px;
+        margin-bottom: 5px;
+      }
+    }
+
+    li.active a {
+      border-bottom-color: $color-border;
+      background-color: $color-white;
+    }
+  }
+}
+
+@media print {
+  .nav-tabs {
+    display: none;
+  }
+
+  .tab-pane {
+    display: block !important;
+    visibility: visible !important;
+    margin-top: $gutter-size;
+    border-top: 1px solid $color-border;
+
+    // display tab headings
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 0;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $color-border;
+    }
+  }
+}
