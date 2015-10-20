@@ -3,12 +3,12 @@ describe('', function () {
   var controller;
 
   beforeEach(function () {
-    bard.appModule('app.dashboard');
+    bard.appModule('app.login');
     bard.inject('$controller', '$log', '$rootScope');
   });
 
   beforeEach(function () {
-    controller = $controller('DashboardController', {
+    controller = $controller('LoginController', {
       $scope: $rootScope.$new()
     });
     $rootScope.$apply();
@@ -16,7 +16,7 @@ describe('', function () {
 
   bard.verifyNoOutstandingHttpRequests();
 
-  describe('Dashboard Controller', function () {
+  describe('Login Controller', function () {
     it('should be created successfully', function () {
       expect(controller).toBeDefined();
     });
