@@ -256,6 +256,10 @@ module.exports = function (grunt) {
         wiredep: {
             main: {
                 src: 'src/index.html'
+            },
+            test: {
+                src: 'src/index.html',
+                devDependencies: true
             }
         },
         //Imagemin has issues on Windows.
@@ -339,7 +343,7 @@ module.exports = function (grunt) {
         'copy', 'htmlmin', 'clean:after'
     ]);
     grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'compass', 'watch']);
-    grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests', 'e2e-test']);
+    grunt.registerTask('test', ['inject:test', 'dom_munger:read', 'karma:all_tests'/*, 'e2e-test'*/, 'wiredep:main']);
     grunt.registerTask('inject', ['injector', 'wiredep']);
     grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
 
