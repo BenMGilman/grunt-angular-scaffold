@@ -2,7 +2,7 @@ describe('core', function() {
     describe('state', function() {
         var controller;
         var views = {
-            four0four: 'core/404.html'
+            four0four: 'app/core/404.html'
         };
 
         var $location, $rootScope, $state;

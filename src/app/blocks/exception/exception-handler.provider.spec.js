@@ -12,7 +12,7 @@ describe('blocks.exception', function() {
     beforeEach(inject(function(_$rootScope_, _$httpBackend_, _$templateCache_) {
         $rootScope = _$rootScope_;
         $httpBackend = _$httpBackend_;
-        _$templateCache_.put('core/404.html', '404');
+        _$templateCache_.put('app/core/404.html', '404');
     }));
 
     beforeEach(function() {
