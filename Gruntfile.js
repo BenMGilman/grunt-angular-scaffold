@@ -244,11 +244,12 @@ module.exports = function (grunt) {
             options: {
                 relative: true,
                 addRootSlash: false,
-                ignorePath: 'src/'
+                ignorePath: 'src/',
+                template: 'src/index.html'
             },
             local_dependencies: {
                 files: {
-                    'src/index.html': ['src/**/*.module.js', 'src/**/*.js', 'temp/app.css']
+                    'src/index.html': ['src/**/*.module.js', 'src/**/*.js', '!src/**/*.spec.js' ,'temp/app.css']
                 }
             }
         },
@@ -334,7 +335,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
-        'jshint', 'clean:before', 'compass', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
+        'inject', 'jshint', 'clean:before', 'compass', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
         'copy', 'htmlmin', 'clean:after'
     ]);
     grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'compass', 'watch']);
