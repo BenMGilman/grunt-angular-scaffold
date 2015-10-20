@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('appCore')
+        .module('app.core')
         .run(appRun);
 
     /* @ngInject */
@@ -12,7 +12,7 @@
                 state: '404',
                 config: {
                     url: '/404',
-                    templateUrl: 'appCore/404.html',
+                    templateUrl: 'core/404.html',
                     title: '404'
                 }
             }

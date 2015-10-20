@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('appCore')
+        .module('app.core')
         .constant('toastr', toastr)
         .constant('moment', moment);
 })(angular, toastr, moment);

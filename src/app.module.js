@@ -12,7 +12,7 @@
      * @name: scaffoldTest
      *
      */
-    angular.module('scaffoldTest', ['appCore']);
+    angular.module('scaffoldTest', ['app.core']);
     angular.module('scaffoldTest').run(scaffoldTestRun);
 
     /* @ngInject */

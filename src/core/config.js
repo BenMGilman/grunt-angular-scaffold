@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var core = angular.module('appCore');
+    var core = angular.module('app.core');
 
     core.config(toastrConfig);
 

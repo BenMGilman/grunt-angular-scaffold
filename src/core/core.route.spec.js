@@ -2,12 +2,12 @@ describe('core', function() {
     describe('state', function() {
         var controller;
         var views = {
-            four0four: 'appCore/404.html'
+            four0four: 'core/404.html'
         };
 
         var $location, $rootScope, $state;
 
-        beforeEach(module('appCore'));
+        beforeEach(module('app.core'));
         beforeEach(inject(function(_$location_, _$rootScope_, _$state_, _$templateCache_) {
 
             _$templateCache_.put(views.four0four, '404');

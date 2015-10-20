@@ -6,13 +6,13 @@ describe('blocks.exception', function() {
         prefix: '[TEST]: '
     };
 
-    beforeEach(module('appCore', function(exceptionHandlerProvider) {
+    beforeEach(module('app.core', function(exceptionHandlerProvider) {
         exceptionHandlerProv = exceptionHandlerProvider;
     }));
     beforeEach(inject(function(_$rootScope_, _$httpBackend_, _$templateCache_) {
         $rootScope = _$rootScope_;
         $httpBackend = _$httpBackend_;
-        _$templateCache_.put('appCore/404.html', '404');
+        _$templateCache_.put('core/404.html', '404');
     }));
 
     beforeEach(function() {

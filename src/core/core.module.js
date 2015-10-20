@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('appCore', [
+        .module('app.core', [
             'ngAnimate',
             'ngSanitize',
             'blocks.exception',
