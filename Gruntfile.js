@@ -97,9 +97,9 @@ module.exports = function (grunt) {
                 ],
                 tasks: [] //all the tasks are run dynamically during the watch event handler
             },
-            less: {
-                files: [createFolderGlobs(['*.less'], true)],
-                tasks: ['less:development'],
+            compass: {
+                files: [createFolderGlobs(['*.scss'], true)],
+                tasks: ['compass'],
                 options: {
                     spawn: true
                 }
@@ -125,19 +125,19 @@ module.exports = function (grunt) {
                 src: ['temp']
             }
         },
-        less: {
-            production: {
-                options: {},
-                files: {
-                    'temp/app.css': 'src/app.module.less'
-                }
+        compass: {
+            options: {
+                sassDir: 'src/styles',
+                cssDir: 'temp',
+                generatedImagesDir: 'temp/images/generated',
+                imagesDir: 'src/images',
+                fontsDir: 'src/styles/fonts',
+                relativeAssets: false,
+                assetCacheBuster: false,
+                raw: 'Sass::Script::Number.precision = 10\n'
             },
-
-            development: {
-                options: {},
-                files: {
-                    "temp/app.css": "src/app.module.less" // destination file and source file
-                }
+            dist: {
+                options: {}
             }
         },
         ngtemplates: {
@@ -334,10 +334,10 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
-        'jshint', 'clean:before', 'less', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
+        'jshint', 'clean:before', 'compass', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
         'copy', 'htmlmin', 'clean:after'
     ]);
-    grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'less:development', 'watch']);
+    grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'compass', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'karma:all_tests', 'e2e-test']);
     grunt.registerTask('inject', ['injector', 'wiredep']);
     grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);

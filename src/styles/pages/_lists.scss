@@ -1,0 +1,175 @@
+.list-name {
+  /*overflow: hidden;
+  max-width: 300px;
+  height: 40px;
+  text-overflow: ellipsis;*/
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.lists {
+  width: 160px;
+  .list-names {
+    max-width: 100%;
+
+    button {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+.items {
+  width: calc(100% - 160px);
+  padding-left: 0;
+}
+
+
+
+/* LEFT SIDE LIST NAVIGATION BUTTONS */
+.custom-lists .btn-list {
+  min-width: 105px;
+  font-size: $font-size-base;
+
+  &.bek-drag-active {
+    border: 1px dashed $color-border;
+  }
+
+  &.bek-drag-hover {
+    color: $color-blue;
+    border: 2px solid $color-blue;
+    cursor: copy;
+  }
+  
+  // button list of custom list names
+  &.custom-lists__name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    // currently selected list link
+    &.current-list {
+      background-color: $color-blue;
+      color: $color-white !important;
+      border: 1px solid $color-blue;
+    }
+  }
+}
+
+.hidden-icon{
+  visibility: hidden;
+}
+
+// trash can button
+.btn-trash {
+  margin-top: 10px;
+  display: block;
+  
+  &.bek-drag-active {
+    border: 1px dashed $color-red;
+    // display: inline-block;
+  }
+
+  &.bek-drag-hover {
+    border: 2px solid $color-red;
+    cursor: copy;
+  }
+}
+
+.custom-lists__multi-actions {
+  .multi-action-btn {
+    height: 40px;
+  }
+}
+
+/* DRAG AND DROP */
+.ui-draggable-handle {
+  cursor: move;
+}
+.ui-draggable-dragging {
+  border-right: 1px solid $color-border !important;
+  border-left: 1px solid $color-border !important;
+  box-shadow: 0px 0px 10px $color-border;
+  td {
+    background-color: $color-white !important;
+  }
+  
+  .hidden-drag {
+    display: none;
+  } 
+}
+.ui-sortable-placeholder {
+  display: block !important;
+}
+.ui-sortable-helper tr {
+  // border: 1px solid $color-border !important;
+  box-shadow: 0px 0px 10px $color-border;
+  td {
+    border-top: $color-border;
+    background-color: $color-white !important;
+  }
+}
+.bek-reordered-item td  {
+  background-color: $color-yellow !important;
+}
+.custom-lists__table td {
+  background-clip: padding-box; // firefox border fix for position: relative table elements
+  input[type="text"].edit-label{
+    width: 80%;
+  }
+  .form-control.edit-label {
+    max-width: 175px;
+    display: inline-block;
+  }
+  .select-div {
+    max-width: 175px;
+  }
+}
+
+/*SHARE/COPY LIST MODAL*/
+.share-customers, .copy-customers {
+  @include scroll-div-vertical(250px);
+}
+
+.list-print-column {
+  @extend .visible-print;
+
+  border: 1px solid $color-border;
+  // width: 35px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@media (min-width: $screen-sm-min) {
+  .list-names {
+    max-height: 463px;
+    overflow-y: auto;
+  }
+}
+
+// highlight row when hovering on desktop only
+@media (min-width: $screen-md-min) {
+  table.custom-lists__table tbody tr:hover td {
+    background-color: #EBE7D9;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  // .list-form {
+  //   // max-height: 523px;
+  //   height: 523px;
+  //   overflow-y: auto;
+  //   overflow-x: auto;
+  // }
+}
+
+@media (max-width: $screen-sm-max) {
+  .items {
+    width: 100%;
+    padding-left: $gutter-size;
+  }
+  .custom-lists {
+    position:absolute; 
+    z-index: 3; 
+    right: 10px; 
+    top: 155px;
+  }
+}

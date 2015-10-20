@@ -1,0 +1,39 @@
+.item-details__main-info {
+
+  .item-details__icons {
+    margin-left: $gutter-size;
+    font-size: 15px;
+  }
+
+  .main-info__description {
+    max-width: 275px;
+  }
+}
+.item-details__main-image {
+  padding-right: $gutter-size;
+
+  img {
+    height: 135px;
+  }
+}
+
+.item-details__images {
+  padding: $gutter-size;
+
+  img {
+    margin: 3px;
+  }
+}
+
+.item-details__table {
+  > tbody > tr:first-child > td,
+  > tbody > tr:first-child > th {
+    border-top: none;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .item-name {
+    margin-top: 0;
+  }
+}

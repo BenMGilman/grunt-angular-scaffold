@@ -1,0 +1,33 @@
+.item-usage-form {
+  td {
+    padding-right: 15px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.inventory-report .lists-dropdown {
+  float: right;
+}
+
+@media (max-width: $screen-sm-max) {
+  .item-usage-form label {
+    display: block;
+  }
+
+
+  .inventory-report {
+      .item-number-input.form-control {
+      width: initial;
+      display: inline-block;
+    }
+
+    .lists-dropdown {
+      float: left;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}

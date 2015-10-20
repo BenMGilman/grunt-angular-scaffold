@@ -1,0 +1,39 @@
+.top-buffer {
+  margin-top: 20px;
+}
+
+.preferencesTable {
+
+  th {
+    padding: 5px 7px;
+  }
+  td {
+    padding: 7px 7px;
+
+    &.checkboxCenter {
+      text-align: center;
+    }
+  }
+}
+
+.smallerHeaderLinkText {
+  font-size: 16px;
+}
+
+.infiniteScroll {
+  @include scroll-div-vertical(300px);
+}
+
+
+.search-form {
+  margin-bottom: $gutter-size;
+  display: block;
+}
+
+.internal-user-search-form h3{
+  margin-top:11px;
+}
+
+.searchbar-btn{
+  height:31px;
+}

@@ -1,0 +1,71 @@
+/* list of available variables found at http://getbootstrap.com/customize/ */
+
+// colors
+$brand-primary: $color-blue;
+$brand-success: $color-green;
+$brand-warning: $color-orange;
+$brand-danger: $color-red;
+$gray-lighter: $color-border;
+
+// scaffolding
+$text-color: $color-font;
+$body-bg: $background;
+
+// typography
+$font-size-base: 12px;
+$font-size-large: 14px;
+$font-size-h1: 25px;
+$font-size-h2: 21px;
+$font-size-h3: 18px;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+$icon-font-path: '../fonts/bootstrap/';
+
+// components
+$padding-large-vertical: 10px;
+$padding-large-horizontal: 12px;
+$border-radius-large: 4px;
+$caret-width-base: 5px;
+$caret-width-large: 5px;
+
+// tables
+$table-bg-accent: $background;
+$table-bg-hover: #EBE7D9;
+$table-border-color: $color-border;
+$table-bg-hover: lighten($color-border, 20%);
+
+// buttons
+$btn-default-border: $color-border;
+$btn-default-color: $color-font;
+$btn-font-weight: 300;
+
+// forms
+$input-border: $color-border;
+$input-height-large: 40px;
+
+// dropdowns 
+$dropdown-link-hover-bg: $background;
+$dropdown-caret-color: $color-border;
+
+// navs
+$nav-link-hover-bg: lighten($color-border, 20%);
+$nav-tabs-active-link-hover-bg: $color-white;
+
+// list group
+$list-group-border: $color-border;
+
+// modals
+$modal-content-border-color: $color-border;
+$modal-header-border-color: $color-border;
+$modal-footer-border-color: $color-border;
+$zindex-modal: 1000;
+$zindex-modal-background: 1000;
+
+// tabs 
+$nav-tabs-border-color: $color-border;
+$nav-tabs-link-hover-border-color: $color-border;
+$nav-tabs-active-link-hover-bg: $color-white;
+$nav-tabs-active-link-hover-color: $color-font;
+$nav-tabs-active-link-hover-border-color: $color-border;
+$nav-tabs-justified-link-border-color: $color-border;
+$nav-tabs-justified-active-link-border-color: $color-border;
