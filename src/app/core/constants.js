@@ -1,9 +1,9 @@
 /* global toastr:false, moment:false */
-(function(angular, toastr, moment) {
+(function() {
     'use strict';
 
     angular
         .module('app.core')
         .constant('toastr', toastr)
         .constant('moment', moment);
-})(angular, toastr, moment);
+})();
