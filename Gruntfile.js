@@ -278,7 +278,7 @@ module.exports = function (grunt) {
         // },
         karma: {
             options: {
-                frameworks: ['jasmine'],
+                frameworks: ['jasmine', 'es5-shim'],
                 files: [  //this files data is also updated in the watch handler, if updated change there too
                     '<%= dom_munger.data.appjs %>',
                     'bower_components/angular-mocks/angular-mocks.js',
@@ -342,10 +342,11 @@ module.exports = function (grunt) {
         'inject', 'jshint', 'clean:before', 'compass', 'dom_munger', 'ngtemplates', 'cssmin', 'concat', 'ngAnnotate', 'uglify',
         'copy', 'htmlmin', 'clean:after'
     ]);
-    grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', 'karma:during_watch', 'connect', 'compass', 'watch']);
+    grunt.registerTask('serve', ['inject', 'dom_munger:read', 'jshint', /*'karma:during_watch',*/ 'connect', 'compass', 'watch']);
     grunt.registerTask('test', ['inject:test', 'dom_munger:read', 'karma:all_tests'/*, 'e2e-test'*/, 'wiredep:main']);
-    grunt.registerTask('inject', ['injector', 'wiredep']);
     grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
+    grunt.registerTask('inject', ['injector', 'wiredep:main']);
+    grunt.registerTask('inject:test', ['injector', 'wiredep:test']);
 
     grunt.event.on('watch', function (action, filepath) {
         //https://github.com/gruntjs/grunt-contrib-watch/issues/156

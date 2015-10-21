@@ -28,6 +28,7 @@
     "karma": "~0.12",
     "karma-chrome-launcher": "~0.1",
     "karma-coverage": "~0.2",
+    "karma-es5-shim": "0.0.4",
     "karma-firefox-launcher": "~0.1",
     "karma-jasmine": "~0.3",
     "karma-mocha-reporter": "~0.3",
