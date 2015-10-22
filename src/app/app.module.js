@@ -5,6 +5,7 @@
         'app.core',
         'app.login',
         'app.dashboard',
+        'app.shell',
         'app.pouch'
     ]);
   
