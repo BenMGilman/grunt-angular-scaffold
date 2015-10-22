@@ -17,7 +17,9 @@
                 state: 'shell',
                 config: {
                     abstract: true,
-                    templateUrl: 'app/shell/shell.html'
+                    templateUrl: 'app/shell/shell.html',
+                    controller: 'ShellController',
+                    controllerAs: 'vm'
                 }
             }
         ];
