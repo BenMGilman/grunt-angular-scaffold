@@ -5,7 +5,7 @@
 		<ul class="list-unstyled">
 			<button ng-repeat="state in vm.navStates" class="btn-no-style" ui-sref-active="is-selected" ui-sref="{{state.name}}">
 				<li>
-					<span class="icon-house sidebar-nav__icon"></span> Dashboard
+					<span class="sidebar-nav__icon" ng-class="state.icon"></span> {{state.title}}
 				</li>
 			</button>
 		</ul>

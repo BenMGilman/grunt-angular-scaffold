@@ -18,6 +18,7 @@
                 config: {
                     url: '/dashboard',
                     title: 'Dashboard',
+                    icon: 'icon-house',
                     templateUrl: 'app/dashboard/dashboard.html',
                     controller: 'DashboardController',
                     controllerAs: 'vm'
