@@ -21,7 +21,7 @@
 		}
 		
 		function getTabs() {
-			var secondRouteOnlyRegex = new RegExp('shell' + "\.[a-z]+$", "i");
+			var secondRouteOnlyRegex = new RegExp('shell' + '\.[a-z]+$', 'i');
 			return _.filter(routerHelper.getStates(), function(s) {
 				return secondRouteOnlyRegex.test(s.name) && !s.abstract;
 			});
